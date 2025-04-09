@@ -1,78 +1,229 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>최저가애플샵</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #f5f9ff;
+      color: #222;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 20px 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #0a60ff;
+      font-weight: 700;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #0a60ff;
+    }
+
+    .banner {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to bottom right, #e3f0ff, #ffffff);
+    }
+
+    .banner h2 {
+      font-size: 32px;
+      color: #0a60ff;
+      margin-bottom: 10px;
+    }
+
+    .banner p {
+      font-size: 18px;
+      color: #444;
+    }
+
+    .section {
+      padding: 60px 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      color: #0a60ff;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product p {
+      padding: 15px;
+      font-size: 16px;
+      color: #222;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-size: 18px;
+      color: #444;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .steps li::before {
+      content: '✔ ';
+      color: #0a60ff;
+    }
+
+    .discord {
+      background: #ffffff;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .discord a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #0a60ff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    footer {
+      background: #eef4ff;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
+
   <header>
-    <div class="header-container">
-      <div class="logo">최저가애플샵</div>
-      <nav>
-        <ul>
-          <li><a href="#gallery">제품 안내</a></li>
-          <li><a href="#order">구매 안내</a></li>
-          <li><a href="#consult">상담원 연결</a></li>
-        </ul>
-      </nav>
-    </div>
+    <h1>최저가애플샵</h1>
+    <nav>
+      <ul>
+        <li><a href="#products">제품</a></li>
+        <li><a href="#order">구매 안내</a></li>
+        <li><a href="#discord">상담</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section id="gallery">
-    <h2>🖼️ 제품 안내 (Product Gallery)</h2>
-    <p>믿을 수 있는 정품 애플 제품, 최저가로 만나보세요!</p>
-    <ul>
-      <li>✅ 100% 정품 보장</li>
-      <li>✅ 실사진 & 실측 정보 제공</li>
-      <li>✅ 합리적인 가격으로 한정 수량 운영</li>
-    </ul>
-    <div class="product-category">
-      <h3>📱 아이폰</h3>
-      <img src="assets/iphone.jpg" alt="아이폰 샘플"/>
-    </div>
-    <div class="product-category">
-      <h3>📘 아이패드</h3>
-      <img src="assets/ipad.jpg" alt="아이패드 샘플"/>
-    </div>
-    <div class="product-category">
-      <h3>💻 맥북</h3>
-      <img src="assets/macbook.jpg" alt="맥북 샘플"/>
+  <section class="banner">
+    <h2>정품 애플을 최저가로!</h2>
+    <p>실물 사진, 구성품, 상태를 투명하게 공개합니다.</p>
+  </section>
+
+  <section class="section" id="products">
+    <h2>인기 제품 안내</h2>
+    <div class="products">
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1603898037225-dabd39cb70b4" alt="아이폰">
+        <p>📱 아이폰 13 프로 – 1,200,000원</p>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1580910051073-e2b8aa272314" alt="아이패드">
+        <p>📘 아이패드 에어 – 900,000원</p>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1610394219814-1a34400b536b" alt="맥북">
+        <p>💻 맥북 프로 – 2,000,000원</p>
+      </div>
     </div>
   </section>
 
-  <section id="order">
-    <h2>🛒 구매 안내 (How to Order)</h2>
-    <p>처음이신가요? 구매 방법이 어렵지 않아요!</p>
-    <ul>
-      <li>📦 주문 방법, 결제 방식, 배송 안내</li>
-      <li>💬 텔레그램 실시간 문의 가능</li>
-      <li>❗ 자주 묻는 질문도 함께 확인해주세요</li>
+  <section class="section" id="order">
+    <h2>구매 방법 안내</h2>
+    <ul class="steps">
+      <li>제품을 선택합니다.</li>
+      <li>디스코드에서 상담 및 결제 안내를 받습니다.</li>
+      <li>배송 정보를 확인하고 수령합니다.</li>
     </ul>
-    <p>✔️ 거래 전 확인자료 제공 (실물 사진, 상태표, 실측 데이터)</p>
   </section>
 
-  <section id="consult">
-    <h2>🎧 상담원 연결 (디스코드 상담 & 디코샵 안내)</h2>
-    <p>디스코드에서 1:1 실시간 상담 받으세요!</p>
-    <ul>
-      <li>🔗 <a href="https://discord.com" target="_blank">디스코드 접속 링크</a></li>
-      <li>📢 디코샵 전용 이벤트도 진행 중</li>
-      <li>💡 인증된 제품만 취급, 특별 할인 제공</li>
-    </ul>
+  <section class="section" id="discord">
+    <div class="discord">
+      <h2>📡 실시간 디스코드 상담</h2>
+      <p>디스코드에서 빠르고 친절하게 안내해드립니다.</p>
+      <a href="https://discord.gg/yourlink" target="_blank">디스코드 접속하기</a>
+    </div>
   </section>
 
   <footer>
-    <h3>🔐 신뢰 & 보안 시스템</h3>
-    <ul>
-      <li>📊 실시간 할인표 / 가격 투명성</li>
-      <li>📁 고객 전용 PDF 가이드북</li>
-      <li>📈 마진 계산기 제공</li>
-      <li>✔️ 사기방지 매뉴얼 / 신고 시스템 운영</li>
-    </ul>
-    <p>© 2025 최저가애플샵. All Rights Reserved.</p>
+    <p>© 2025 최저가애플샵 – 신뢰 기반 애플 제품 판매, 투명한 가격, 안전한 거래 보장</p>
   </footer>
+
 </body>
 </html>
